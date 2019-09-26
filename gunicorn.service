@@ -1,0 +1,12 @@
+[Unit]
+Descripiton=gunicorn daemon
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/website
+ExecStart=/home/ubuntu/website/env/bin/gunicorn  --access-logfile -  --workers 3  --bind unix:/home/ubuntu/website/batatize_se.sock  batatize_se.wsgi:application
+
+[Install]
+Wantedby=multi-user.target
